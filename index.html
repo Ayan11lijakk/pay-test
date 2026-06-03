@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ayan_NooB Stripe Payment</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- Stripe.js must be loaded from Stripe's CDN — never self-hosted -->
+  <script src="https://js.stripe.com/v3/" defer></script>
+</head>
+<body>
+  <div class="card">
+    <h1>💳 Test Pay securely</h1>
+    <p class="subtitle">Powered by Stripe
+	                                         Dev by Ayan_Noob </p>
+
+    <form id="payment-form">
+      <label for="amount">Amount (USD)</label>
+      <input
+        type="number"
+        id="amount"
+        min="0.50"
+        step="0.01"
+        value="10.00"
+        required
+      />
+
+      <!-- Stripe injects its secure iFrame here -->
+      <div id="payment-element"></div>
+
+      <div id="payment-message" role="alert"></div>
+
+      <button id="submit-btn" type="submit">
+        <span id="btn-text">Pay now</span>
+        <div id="spinner"></div>
+      </button>
+    </form>
+  </div>
+
+  <script>
+    // Replace with your deployed Cloudflare Worker origin before publishing frontend.
+    window.STRIPE_API_BASE = 'https://stripe-test-mod-worker.hogamarav1.workers.Dev';
+  </script>
+  <script src="./payment.js" defer></script>
+</body>
+</html>
